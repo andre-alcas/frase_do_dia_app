@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai, a não ser por mim. Jo 14:6",
     "Aquele que habita no abrigo do Altíssimo e descansa à sombra do Todo-poderoso Sl 91:1",
     "Senhor, tu és o nosso refúgio, sempre, de geração em geração. Sl 90:1"
-    "Os céus declaram a glória de Deus e o firmamento anuncia a obra das suas mãos. Sl 19:1"
+        "Os céus declaram a glória de Deus e o firmamento anuncia a obra das suas mãos. Sl 19:1"
   ];
 
   List _frases_mal_humor = [
@@ -86,28 +86,28 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Pressione um botão para gerar uma frase:',
-            ),
-            Text(
-              _frase_escolhida,
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
-            ),
-          ],
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-      ),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Pressione um botão para gerar uma frase:',
+              ),
+              Text(
+                _frase_escolhida,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
         floatingActionButton: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
