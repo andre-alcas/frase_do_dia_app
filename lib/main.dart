@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Colors.lightBlue,
       ),
       home: const MyHomePage(title: 'Frases do dia'),
     );
@@ -35,6 +35,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int _numeroAleatorio = 0;
+  int _numeroAleatorio_img = 0;
+
   List _frases_bom_humor = [
     "O tolo dá vazão à sua ira, mas o sábio domina-se. Pv 29:11",
     "Em paz me deito e logo pego no sono, porque só tu, Senhor, me fazes dormir em paz e em segurança. Sl 4:8",
@@ -67,11 +69,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String _frase_escolhida = 'Como você está se sentido hoje ?';
 
+  String image = "logo.png";
+
+  List images_name = ["paisagem1.png","paisagem2.jpg","paisagem3.png"];
+
   void _incrementCounter(int humor) {
     setState(() {
       //_counter++;
-      _numeroAleatorio = new Random().nextInt(6);
+      _numeroAleatorio = new Random().nextInt(_frases_bom_humor.length);
+      _numeroAleatorio_img = new Random().nextInt(images_name.length);
     });
+    image = images_name[_numeroAleatorio_img];
     if(humor==1){
       _frase_escolhida = _frases_bom_humor[_numeroAleatorio];
     }
@@ -91,18 +99,25 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
+
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'Pressione um botão para gerar uma frase:',
-              ),
+              Image.asset("images/$image"),
+              Padding(padding: EdgeInsets.all(6)),
+              // const Text(
+              //   'Pressione um botão para gerar uma frase: ',
+              // ),
               Text(
                 _frase_escolhida,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: TextStyle(
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -115,29 +130,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Icon(FluentIcons.emoji_sparkle_16_regular),
                 tooltip: 'Estou bem',
                 onPressed: ()  => _incrementCounter(1),
+                backgroundColor: Colors.lightBlueAccent.shade400,
               ),
-              SizedBox(
-                height: 10,
-              ),
+              Padding(padding: EdgeInsets.all(3)),
               FloatingActionButton(
                 child: Icon(FluentIcons.emoji_meh_16_regular),
                 tooltip: 'Estou mais ou menos',
                 onPressed: () => _incrementCounter(2),
+                backgroundColor: Colors.lightBlueAccent.shade200,
               ),
-              SizedBox(
-                height: 10,
-              ),
+              Padding(padding: EdgeInsets.all(3)),
               FloatingActionButton(
                 child: Icon(FluentIcons.emoji_sad_16_regular),
                 tooltip: 'Estou mal',
                 onPressed: () => _incrementCounter(3),
+                backgroundColor: Colors.lightBlueAccent.shade100,
               ),
-              SizedBox(
-                height: 10,
-              ),
-
+              Padding(padding: EdgeInsets.all(3)),
             ]
-        )
+        ),
     );
   }
 }
